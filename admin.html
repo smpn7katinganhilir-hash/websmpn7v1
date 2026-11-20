@@ -1,0 +1,657 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Website | SMP Negeri 7 Katingan Hilir</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f6fa;
+    color: #24324a;
+}
+
+button, input, textarea, select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* HEADER */
+.admin-header {
+    background: linear-gradient(135deg, #294987, #4267a9);
+    color: white;
+    padding: 45px 7%;
+}
+
+.admin-header h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    margin: 0 0 10px;
+}
+
+.admin-header p {
+    margin: 0;
+    opacity: .85;
+    font-size: 16px;
+}
+
+.admin-header-inner {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* MAIN */
+.admin-container {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* DASHBOARD */
+.admin-dashboard {
+    display: none;
+}
+
+.admin-dashboard:not([hidden]) {
+    display: block;
+}
+
+/* TOP BAR */
+.dashboard-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.dashboard-top h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.admin-identity {
+    color: #6b7890;
+    margin-top: 7px;
+    font-size: 14px;
+}
+
+.logout-button {
+    background: #fff;
+    border: 1px solid #dce3ee;
+    color: #334b77;
+    border-radius: 10px;
+    padding: 11px 18px;
+    font-weight: 600;
+}
+
+.logout-button:hover {
+    background: #eef3ff;
+}
+
+/* STATISTICS */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 23px;
+    border: 1px solid #e8edf4;
+    box-shadow: 0 3px 12px rgba(30, 50, 80, .03);
+}
+
+.stat-card .stat-label {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.stat-card .stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2d4b93;
+}
+
+/* TABS */
+.admin-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.admin-tabs button {
+    border: 1px solid #dce4f0;
+    background: white;
+    color: #53647e;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.admin-tabs button.active {
+    background: #2d4b93;
+    color: white;
+    border-color: #2d4b93;
+}
+
+/* CONTENT PANEL */
+.admin-panel {
+    background: white;
+    border: 1px solid #e8edf4;
+    border-radius: 18px;
+    padding: 28px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(30, 50, 80, .03);
+}
+
+.admin-panel h3 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.admin-panel[hidden] {
+    display: none !important;
+}
+
+/* FORM */
+.admin-form {
+    display: grid;
+    gap: 17px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    border: 1px solid #dce4ef;
+    border-radius: 10px;
+    padding: 12px 14px;
+    background: #fbfcfe;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #2d4b93;
+    box-shadow: 0 0 0 3px rgba(45, 75, 147, .08);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.admin-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.primary-action,
+.secondary-action {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 18px;
+    font-weight: 600;
+}
+
+.primary-action {
+    background: #2d4b93;
+    color: white;
+}
+
+.primary-action:hover {
+    background: #213a75;
+}
+
+.secondary-action {
+    background: #edf1f7;
+    color: #425675;
+}
+
+/* LIST */
+.admin-list {
+    margin-top: 25px;
+}
+
+.admin-row {
+    border: 1px solid #e7ecf3;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 14px;
+    background: #fff;
+}
+
+.admin-row h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.admin-row p {
+    color: #687890;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.status-tag {
+    display: inline-block;
+    background: #edf2ff;
+    color: #385896;
+    padding: 4px 9px;
+    border-radius: 30px;
+    font-size: 11px;
+    margin-left: 7px;
+    vertical-align: middle;
+}
+
+.admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.admin-actions button {
+    border: 1px solid #dce4ef;
+    background: #f8fafc;
+    color: #465b79;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.admin-actions button:hover {
+    background: #edf2fa;
+}
+
+.admin-actions .primary-action {
+    background: #2d4b93;
+    border-color: #2d4b93;
+    color: white;
+}
+
+.empty {
+    padding: 25px;
+    text-align: center;
+    color: #8491a5;
+    background: #f8fafc;
+    border-radius: 12px;
+}
+
+/* MODULE */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.module-card {
+    border: 1px solid #e6ebf3;
+    padding: 20px;
+    border-radius: 12px;
+    background: #fafcff;
+}
+
+.module-card h4 {
+    margin: 0 0 8px;
+}
+
+.module-card p {
+    color: #75839a;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* FOOTER */
+.admin-footer {
+    text-align: center;
+    color: #8a97a9;
+    padding: 30px 15px;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 700px) {
+
+    .admin-header {
+        padding: 35px 22px;
+    }
+
+    .admin-container {
+        margin-top: 22px;
+        padding: 0 14px;
+    }
+
+    .admin-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .admin-panel {
+        padding: 20px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-top {
+        align-items: flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="admin-header">
+    <div class="admin-header-inner">
+        <h1>Admin Website</h1>
+        <p>SMP Negeri 7 Katingan Hilir</p>
+        <p style="margin-top:12px">
+            Kelola informasi, pengumuman, dan moderasi buku tamu website sekolah.
+        </p>
+    </div>
+</header>
+
+
+<main class="admin-container">
+
+    <!-- LOGIN CONTAINER -->
+    <section id="adminLogin" hidden>
+        <div class="admin-panel">
+            <h2>Memeriksa akses administrator...</h2>
+            <p>Mohon tunggu sebentar.</p>
+        </div>
+    </section>
+
+
+    <!-- DASHBOARD -->
+    <section id="adminDashboard" hidden>
+
+        <!-- DASHBOARD TOP -->
+        <div class="dashboard-top">
+
+            <div>
+                <h2>Dashboard Administrator</h2>
+
+                <div class="admin-identity">
+                    Selamat datang,
+                    <strong id="adminName">Administrator</strong>
+                    <span id="adminRole"></span>
+                </div>
+            </div>
+
+            <button id="adminLogout" class="logout-button">
+                Keluar
+            </button>
+
+        </div>
+
+
+        <!-- STATISTIK -->
+        <div class="admin-stats">
+
+            <div class="stat-card">
+                <div class="stat-label">Total Pengumuman</div>
+                <div class="stat-number" id="adminAnnCount">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Buku Tamu Pending</div>
+                <div class="stat-number" id="adminPendingCount">0</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Buku Tamu Disetujui</div>
+                <div class="stat-number" id="adminApprovedCount">0</div>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGASI -->
+        <nav class="admin-tabs">
+
+            <button class="active" data-tab="announcements">
+                Pengumuman
+            </button>
+
+            <button data-tab="guestbook">
+                Buku Tamu
+            </button>
+
+            <button data-tab="modules">
+                Modul Website
+            </button>
+
+        </nav>
+
+
+        <!-- =====================================
+             PANEL PENGUMUMAN
+        ====================================== -->
+        <section id="adminAnnouncements" class="admin-panel">
+
+            <h3>Kelola Pengumuman</h3>
+
+            <p style="color:#718096;font-size:14px">
+                Tambahkan, edit, terbitkan, atau tarik pengumuman.
+            </p>
+
+            <form id="announcementForm" class="admin-form">
+
+                <input type="hidden" id="annId">
+
+                <div class="form-group">
+                    <label for="annTitle">Judul Pengumuman</label>
+                    <input
+                        type="text"
+                        id="annTitle"
+                        placeholder="Masukkan judul pengumuman"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="annCategory">Kategori</label>
+
+                        <select id="annCategory" required>
+                            <option value="">Pilih kategori</option>
+                            <option value="Informasi">Informasi</option>
+                            <option value="Kegiatan">Kegiatan</option>
+                            <option value="Akademik">Akademik</option>
+                            <option value="Prestasi">Prestasi</option>
+                            <option value="Pengumuman">Pengumuman</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="annDate">Tanggal</label>
+                        <input type="date" id="annDate" required>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="annDesc">Isi Pengumuman</label>
+                    <textarea
+                        id="annDesc"
+                        placeholder="Tuliskan isi pengumuman..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="annStatus">Status</label>
+
+                    <select id="annStatus">
+                        <option value="draft">Draft</option>
+                        <option value="published">Terbit</option>
+                    </select>
+                </div>
+
+                <div class="admin-form-actions">
+
+                    <button type="submit" class="primary-action">
+                        Simpan Pengumuman
+                    </button>
+
+                    <button
+                        type="button"
+                        id="annCancel"
+                        class="secondary-action"
+                    >
+                        Reset Form
+                    </button>
+
+                </div>
+
+            </form>
+
+
+            <div class="admin-list">
+
+                <h3>Daftar Pengumuman</h3>
+
+                <div id="adminAnnouncementList">
+                    <p class="empty">Memuat pengumuman...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PANEL BUKU TAMU
+        ====================================== -->
+        <section id="adminGuestbook" class="admin-panel" hidden>
+
+            <h3>Moderasi Buku Tamu</h3>
+
+            <p style="color:#718096;font-size:14px">
+                Periksa pesan pengunjung sebelum ditampilkan pada website.
+            </p>
+
+            <div id="adminGuestList" class="admin-list">
+                <p class="empty">Memuat buku tamu...</p>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PANEL MODUL
+        ====================================== -->
+        <section id="adminModules" class="admin-panel" hidden>
+
+            <h3>Modul Pengelolaan Website</h3>
+
+            <p style="color:#718096;font-size:14px">
+                Modul pengelolaan website sekolah.
+        </p>
+
+            <div class="module-grid">
+
+                <div class="module-card">
+                    <h4>📢 Pengumuman</h4>
+                    <p>Mengelola informasi, berita, dan pengumuman sekolah.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>📖 Buku Tamu</h4>
+                    <p>Memeriksa, menyetujui, dan mengelola pesan pengunjung.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>🖼️ Galeri</h4>
+                    <p>Pengelolaan dokumentasi kegiatan sekolah.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>🏆 Prestasi</h4>
+                    <p>Pengelolaan prestasi murid dan sekolah.</p>
+                </div>
+
+                <div class="module-card">
+                    <h4>🚀 Program Sekolah</h4>
+                    <p>Pengelolaan program unggulan dan inovasi sekolah.</p>
+                </div>
+
+                <div class="module-card" role="button" tabindex="0" data-cms-open="digital_works" style="cursor:pointer">
+                    <h4>📚 Perpustakaan</h4>
+                    <p>Pengelolaan informasi dan koleksi perpustakaan digital. Klik untuk membuka CMS.</p>
+                </div>
+
+            </div>
+            <div id="cmsWorkspace"></div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<footer class="admin-footer">
+    © 2026 SMP Negeri 7 Katingan Hilir · Administrator Website
+</footer>
+
+
+<!-- =========================================
+     SUPABASE & AUTH
+========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+<script src="cms-admin.js"></script>
+
+</body>
+</html>

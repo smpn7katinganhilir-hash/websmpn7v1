@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrator | SMP Negeri 7 Katingan Hilir</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f1f5fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            color: #1e293b;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 960px;
+            min-height: 550px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(30, 50, 90, 0.12);
+        }
+
+        /* PANEL SEKOLAH */
+        .school-panel {
+            background: #2d4b93;
+            color: white;
+            padding: 50px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .school-logo {
+            width: 85px;
+            height: 85px;
+            background: white;
+            padding: 8px;
+            border-radius: 16px;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+
+        .school-label {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .school-title {
+            font-size: 34px;
+            line-height: 1.3;
+            margin: 0 0 20px;
+            font-weight: 700;
+        }
+
+        .school-description {
+            font-size: 15px;
+            line-height: 1.8;
+            opacity: 0.88;
+        }
+
+        .school-footer {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 35px;
+        }
+
+        /* PANEL LOGIN */
+        .login-panel {
+            padding: 55px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-title {
+            font-size: 32px;
+            margin: 0 0 12px;
+            color: #17243b;
+        }
+
+        .login-subtitle {
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0 0 35px;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 16px;
+            border: 1px solid #d8e1ee;
+            border-radius: 12px;
+            background: #f8fafc;
+            outline: none;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #2d4b93;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(45, 75, 147, 0.1);
+        }
+
+        .password-box {
+            position: relative;
+        }
+
+        .password-box input {
+            padding-right: 105px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .login-button {
+            width: 100%;
+            border: none;
+            background: #2d4b93;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+            background: #223b77;
+        }
+
+        .login-button:disabled {
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 13px 15px;
+            border-radius: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f2;
+            color: #b42318;
+            border: 1px solid #fecaca;
+        }
+
+        .message.success {
+            display: block;
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .message.info {
+            display: block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        .back-link {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-link a:hover {
+            color: #2d4b93;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 760px) {
+
+            body {
+                padding: 16px;
+                align-items: flex-start;
+            }
+
+            .login-container {
+                max-width: 480px;
+                grid-template-columns: 1fr;
+                border-radius: 20px;
+            }
+
+            .school-panel {
+                padding: 30px;
+            }
+
+            .school-logo {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 20px;
+            }
+
+            .school-title {
+                font-size: 26px;
+            }
+
+            .school-description {
+                font-size: 13px;
+            }
+
+            .login-panel {
+                padding: 35px 28px;
+            }
+
+            .login-title {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- IDENTITAS SEKOLAH -->
+    <section class="school-panel">
+
+        <div>
+            <img
+                src="assets/images/logo-sekolah.jpeg"
+                class="school-logo"
+                alt="Logo SMP Negeri 7 Katingan Hilir"
+            >
+
+            <div class="school-label">
+                Website Resmi Sekolah
+            </div>
+
+            <h1 class="school-title">
+                SMP Negeri 7<br>
+                Katingan Hilir
+            </h1>
+
+            <p class="school-description">
+                Berkarakter, Berprestasi, dan Menginspirasi.
+                Bersama membangun pendidikan yang bermakna
+                dan masa depan yang penuh potensi.
+            </p>
+        </div>
+
+        <div class="school-footer">
+            © 2026 SMP Negeri 7 Katingan Hilir
+        </div>
+
+    </section>
+
+
+    <!-- FORM LOGIN -->
+    <section class="login-panel">
+
+        <h2 class="login-title">Login Administrator</h2>
+
+        <p class="login-subtitle">
+            Silakan masuk menggunakan akun yang telah diberikan
+            akses pengelolaan website sekolah.
+        </p>
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Masukkan email"
+                    autocomplete="username"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+
+                <div class="password-box">
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Masukkan password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        id="togglePassword"
+                        class="password-toggle"
+                    >
+                        Lihat
+                    </button>
+
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                id="loginButton"
+                class="login-button"
+            >
+                Masuk ke Dashboard
+            </button>
+
+            <div id="loginMessage" class="message"></div>
+
+        </form>
+
+        <div class="back-link">
+            <a href="index.html">← Kembali ke halaman utama</a>
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================================
+     SUPABASE & AUTH
+========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+
+
+<!-- =========================================
+     LOGIN SCRIPT
+========================================= -->
+
+<script>
+(function ()    {
+    "use strict";
+
+    const loginForm = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginButton = document.getElementById("loginButton");
+    const loginMessage = document.getElementById("loginMessage");
+    const togglePassword = document.getElementById("togglePassword");
+
+    const allowedRoles = [
+        "super_admin",
+        "admin",
+        "editor"
+    ];
+
+    // -----------------------------------------
+    // PESAN
+    // -----------------------------------------
+    function showMessage(message, type) {
+        loginMessage.textContent = message;
+        loginMessage.className = "message " + type;
+    }
+
+    function hideMessage() {
+        loginMessage.textContent = "";
+        loginMessage.className = "message";
+    }
+
+    // -----------------------------------------
+    // CEK KOMPONEN BACKEND
+    // -----------------------------------------
+    function checkBackend() {
+
+        if (!window.supabaseClient) {
+            showMessage(
+                "Koneksi Supabase belum tersedia. Periksa supabase-config.js.",
+                "error"
+            );
+            return false;
+        }
+
+        if (!window.SMP7Auth) {
+            showMessage(
+                "Sistem autentikasi belum tersedia. Periksa file auth.js.",
+                "error"
+            );
+            return false;
+        }
+
+        if (typeof window.SMP7Auth.login !== "function") {
+            showMessage(
+                "Fungsi login belum tersedia di auth.js.",
+                "error"
+            );
+            return false;
+        }
+
+        return true;
+    }
+
+    // -----------------------------------------
+    // TAMPILKAN PASSWORD
+    // -----------------------------------------
+    togglePassword.addEventListener("click", function () {
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            togglePassword.textContent = "Sembunyikan";
+        } else {
+            passwordInput.type = "password";
+            togglePassword.textContent = "Lihat";
+        }
+
+    });
+
+    // -----------------------------------------
+    // CEK SESSION
+    // -----------------------------------------
+    async function checkExistingSession() {
+
+        if (!checkBackend()) return;
+
+        try {
+
+            const status = await window.SMP7Auth.getLoginStatus();
+
+            if (
+                status.loggedIn &&
+                status.profile &&
+                allowedRoles.includes(status.profile.role)
+            ) {
+                window.location.replace("admin.html");
+            }
+
+        } catch (error) {
+
+            console.error("Pemeriksaan session:", error);
+
+        }
+
+    }
+
+    checkExistingSession();
+
+    // -----------------------------------------
+    // PROSES LOGIN
+    // -----------------------------------------
+    loginForm.addEventListener("submit", async function (event) {
+
+        event.preventDefault();
+        hideMessage();
+
+        if (!checkBackend()) return;
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        loginButton.disabled = true;
+        loginButton.textContent = "Memeriksa akun...";
+
+        try {
+
+            const result = await window.SMP7Auth.login(
+                email,
+                password
+            );
+
+            if (!result || !result.success) {
+
+                showMessage(
+                    result?.message || "Login gagal. Periksa email dan password.",
+                    "error"
+                );
+
+                return;
+            }
+
+            // ---------------------------------
+            // VALIDASI ROLE
+            // ---------------------------------
+            if (
+                !result.profile ||
+                !allowedRoles.includes(result.profile.role)
+            ) {
+
+                await window.SMP7Auth.logout();
+
+                showMessage(
+                    "Akun Anda tidak memiliki akses administrator.",
+                    "error"
+                );
+
+                return;
+            }
+
+            showMessage(
+                "Login berhasil. Mengarahkan ke dashboard...",
+                "success"
+            );
+
+            loginButton.textContent = "Login berhasil";
+
+            // Redirect dashboard
+            window.location.replace("admin.html");
+
+        } catch (error) {
+
+            console.error("Login error:", error);
+
+            showMessage(
+                error.message || "Terjadi kesalahan saat login.",
+                "error"
+            );
+
+        } finally {
+
+            loginButton.disabled = false;
+
+            if (loginButton.textContent !== "Login berhasil") {
+                loginButton.textContent = "Masuk ke Dashboard";
+            }
+
+        }
+
+    });
+
+})();
+</script>
+
+</body>
+</html>

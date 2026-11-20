@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SMP Negeri 7 Katingan Hilir</title>
+<meta name="description" content="Website SMP Negeri 7 Katingan Hilir — Berkarakter, Berprestasi, Menginspirasi.">
+<link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head>
+<body class="homepage-reference">
+<header class="header"><div class="container nav-wrap">
+<a class="brand" href="index.html"><img class="brand-logo-img" src="assets/images/logo-sekolah.jpeg" alt="Logo SMP Negeri 7 Katingan Hilir"><div><strong>SMP NEGERI 7</strong><small>KATINGAN HILIR</small></div></a>
+<button id="menuToggle" class="menu-toggle" aria-label="Buka menu">☰</button>
+<nav id="navMenu"><a href="index.html">Beranda</a><a href="profil.html">Profil</a><a href="program.html">Program</a><a href="prestasi.html">Prestasi</a><a href="galeri.html">Galeri</a><a href="perpustakaan.html">Perpustakaan</a><a href="pengumuman.html">Informasi</a><a class="nav-cta" href="buku-tamu.html">Buku Tamu</a><a href="admin.html" class="admin-nav">Admin</a></nav>
+</div></header>
+<main>
+<section class="hero hero-reference" id="beranda">
+  <div class="hero-reference-bg" aria-hidden="true"></div>
+  <div class="container hero-reference-inner">
+    <div class="hero-copy hero-reference-copy">
+      <span class="hero-kicker">SELAMAT DATANG DI SMP NEGERI 7 KATINGAN HILIR</span>
+      <h1>Berkarakter,<br><em>Berprestasi, dan Menginspirasi.</em></h1>
+      <p>Ruang belajar, bertumbuh, berkarya, dan menginspirasi untuk membangun masa depan yang penuh potensi.</p>
+      <div class="actions"><a class="button primary" href="profil.html">Jelajahi Sekolah <span aria-hidden="true">→</span></a></div>
+      <div class="hero-scroll-note"><span>SCROLL</span><span aria-hidden="true">↓</span></div>
+    </div>
+  </div>
+</section>
+<section class="home-values-strip" aria-label="Nilai sekolah">
+  <div class="container home-values-grid">
+    <article><span class="home-value-icon">✦</span><strong>Berkarakter</strong><small>Menumbuhkan nilai dan integritas</small></article>
+    <article><span class="home-value-icon">↗</span><strong>Berprestasi</strong><small>Mengembangkan potensi dan karya</small></article>
+    <article><span class="home-value-icon">◎</span><strong>Menginspirasi</strong><small>Belajar dan berbagi praktik baik</small></article>
+  </div>
+</section>
+<section class="welcome-section welcome-reference"><div class="container welcome-grid"><div class="welcome-photo"><img src="assets/images/kepala-sekolah.png" alt="Fahriyana, Kepala SMP Negeri 7 Katingan Hilir"></div><div class="welcome-copy"><span class="eyebrow">SAMBUTAN KEPALA SEKOLAH</span><h2>Selamat Datang di<br><em>SMP Negeri 7 Katingan Hilir</em></h2><p>Selamat datang di website resmi SMP Negeri 7 Katingan Hilir. Website ini menjadi ruang informasi, dokumentasi, dan kolaborasi untuk mengenal lebih dekat perjalanan, program, karya, serta prestasi sekolah kami.</p><p>Kami berkomitmen menghadirkan pendidikan yang humanis, inklusif, bermakna, dan berpihak pada tumbuh kembang murid. Melalui semangat BHINEKA, kami mendorong setiap murid untuk mengenali potensinya, berkarakter, berpikir kritis, berkreasi, peduli lingkungan, serta siap menghadapi perubahan.</p><p>Semoga ruang digital ini memperkuat hubungan sekolah, keluarga, dan masyarakat dalam mendukung pendidikan yang lebih baik.</p><strong>Fahriyana, S.Pd., M.Pd.</strong><small>Kepala SMP Negeri 7 Katingan Hilir</small></div></div></section>
+</main>
+<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="#beranda"><img class="brand-logo-img" src="assets/images/logo-sekolah.jpeg" alt="Logo SMP Negeri 7 Katingan Hilir"><div><strong>SMP NEGERI 7</strong><small>KATINGAN HILIR</small></div></a><p>Berkarakter • Berprestasi • Menginspirasi</p><p class="footer-desc">Menumbuhkan generasi yang berkarakter, kritis, kreatif, adaptif, dan peduli terhadap masa depan.</p></div><div class="footer-links"><h3>Navigasi</h3><a href="profil.html">Profil Sekolah</a><a href="program.html">Program Unggulan</a><a href="prestasi.html">Prestasi</a><a href="galeri.html">Galeri</a><a href="perpustakaan.html">Perpustakaan Digital</a></div><div class="footer-links"><h3>Informasi</h3><p>Kabupaten Katingan</p><p>Kalimantan Tengah</p></div></div><div class="footer-bottom"><div class="container bottom-wrap"><p>© <span id="currentYear"></span> SMP Negeri 7 Katingan Hilir</p><p>Berkarakter • Berprestasi • Menginspirasi</p></div></div></footer>
+<button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+<!-- ========================================= -->
+<!-- SUPABASE BACKEND CONNECTION              -->
+<!-- ========================================= -->
+
+<!-- 1. Memuat library Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- 2. Memuat konfigurasi Supabase milik website -->
+<script src="supabase-config.js"></script>
+
+<!-- 3. Pemeriksaan awal backend -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (window.supabaseClient) {
+        console.log("✅ Supabase berhasil diinisialisasi.");
+        console.log("✅ Website SMP Negeri 7 Katingan Hilir siap terhubung ke backend.");
+    } else {
+        console.error("❌ Supabase client belum tersedia.");
+        console.error("Periksa file supabase-config.js");
+    }
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+BUKU TAMU PUBLIK - AKTIVASI
+
+
+1. Portal publik telah diperbarui: form Buku Tamu mengirim data ke Supabase guestbook_entries.
+2. Pesan otomatis berstatus pending. Pesan tidak tampil publik sebelum disetujui admin.
+3. Jalankan satu kali SQL berikut di Supabase SQL Editor:
+
+GRANT INSERT ON public.guestbook_entries TO anon;
+
+DROP POLICY IF EXISTS "public submit guestbook pending" ON public.guestbook_entries;
+CREATE POLICY "public submit guestbook pending"
+ON public.guestbook_entries
+FOR INSERT
+TO anon
+WITH CHECK (moderation_status = 'pending');
+
+4. Buka buku-tamu.html, kirim pesan uji.
+5. Buka Admin > Buku Tamu. Pesan uji seharusnya muncul sebagai pending.
+6. Setujui pesan untuk menampilkannya di halaman publik.
