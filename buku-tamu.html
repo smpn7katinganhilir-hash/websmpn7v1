@@ -1,1 +1,84 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Buku Tamu | SMPN 7 Katingan Hilir</title><link rel="stylesheet" href="style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script><script src="supabase-config.js" defer></script><script src="app.js" defer></script><script src="portal.js" defer></script></head><body><header class="header"><div class="container nav-wrap"><a class="brand" href="index.html"><img class="brand-logo-img" src="assets/images/logo-sekolah.jpeg" alt="Logo SMP Negeri 7 Katingan Hilir"><div><strong>SMP NEGERI 7</strong><small>KATINGAN HILIR</small></div></a><button id="menuToggle" class="menu-toggle">☰</button><nav id="navMenu"><a href="index.html">Beranda</a><a href="profil.html">Profil</a><a href="program.html">Program</a><a href="prestasi.html">Prestasi</a><a href="galeri.html">Galeri</a><a href="perpustakaan.html">Perpustakaan</a><a href="pengumuman.html">Pengumuman</a><a class="active" href="buku-tamu.html">Buku Tamu</a></nav></div></header><main><section class="portal-hero guestbook-hero"><div class="container"><span class="eyebrow">RUANG SILATURAHMI</span><h1>Buku Tamu<br><em>Berbagi Inspirasi</em></h1><p>Silakan tinggalkan pesan, kesan, saran, atau tujuan kunjungan. Pesan akan ditinjau sebelum ditampilkan.</p></div></section><section class="section"><div class="container guest-grid"><div class="heading"><span class="eyebrow">TERHUBUNG & BERKOLABORASI</span><h2>Terima kasih telah<br><em>berkunjung.</em></h2><p>Silaturahmi dan kolaborasi menjadi bagian penting dalam perjalanan pendidikan.</p><div class="guest-public"><h3>Pesan yang telah disetujui</h3><div id="publicGuestbook"></div></div></div><form id="guestbookPageForm" class="guest-form"><label>Nama *<input id="gbName" required maxlength="80" placeholder="Nama lengkap"></label><label>Instansi (opsional)<input id="gbInstitution" maxlength="100" placeholder="Sekolah / instansi"></label><label>Tujuan *<select id="gbPurpose" required><option value="">Pilih tujuan</option><option>Kunjungan Pendidikan</option><option>Kerja Sama</option><option>Studi Tiru</option><option>Informasi Sekolah</option><option>Orang Tua Murid</option><option>Alumni</option><option>Masyarakat</option><option>Lainnya</option></select></label><label>Pesan *<textarea id="gbMessage" required maxlength="1000" rows="5" placeholder="Tuliskan pesan, kesan, atau saran"></textarea></label><button class="button primary full" type="submit">Kirim Pesan →</button><small class="form-note">Pesan disimpan pada browser prototipe dan menunggu moderasi admin.</small><div id="gbStatus" role="status"></div></form></div></section></main><footer class="footer"><div class="container footer-grid"><div><strong>SMP NEGERI 7 KATINGAN HILIR</strong><p>Berkarakter • Berprestasi • Menginspirasi</p></div><div class="footer-links"><h3>Navigasi</h3><a href="pengumuman.html">Pengumuman</a><a href="admin.html">Admin</a></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buku Tamu — SMP Negeri 7 Katingan Hilir</title>
+<meta name="description" content="Tinggalkan pesan, kesan, dan saran untuk SMP Negeri 7 Katingan Hilir.">
+<meta name="theme-color" content="#1f2f47">
+<meta property="og:title" content="Buku Tamu — SMP Negeri 7 Katingan Hilir">
+<meta property="og:description" content="Tinggalkan pesan, kesan, dan saran untuk SMP Negeri 7 Katingan Hilir.">
+<meta property="og:image" content="assets/images/hero.webp">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="assets/js/theme.js"></script>
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/themes.css">
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke konten</a>
+<div class="topbar"><div class="wrap topbar-in">
+  <span class="tb-items"><span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>smpn7katinganhilir@gmail.com</span><span class="tb-x"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>Jl. Manjau, Kasongan Lama, Katingan Hilir</span><span class="tb-x">NPSN 70047153</span></span>
+  <span class="tb-soc"><a class="tb-admin" href="admin.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Login Admin</span></a><a href="https://www.facebook.com/share/1A4gg72ULX/" target="_blank" rel="noopener" aria-label="Facebook SMP Negeri 7 Katingan Hilir"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7H17l.5-4h-4V8.8c0-.5.3-.8.5-.8Z"/></svg></a><a href="https://www.instagram.com/smpn7katingan" target="_blank" rel="noopener" aria-label="Instagram @smpn7katingan"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a></span>
+</div></div>
+<header class="site-header"><div class="wrap hdr-in">
+  <a class="brand" href="index.html"><img class="brand-logo" src="assets/images/logo-sekolah.jpeg" alt="Logo SMP Negeri 7 Katingan Hilir" width="46" height="46"><span class="brand-txt"><b>SMP Negeri 7</b><small>KATINGAN HILIR</small></span></a>
+  <nav class="nav" id="siteNav" aria-label="Menu utama"><a class="nav-link" href="index.html">Beranda</a><div class="dd"><button type="button" class="nav-link dd-btn" aria-haspopup="true" aria-expanded="false">Profil <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="dd-menu"><a href="profil.html">Profil Sekolah</a><a href="profil.html#visi-misi">Visi &amp; Misi</a><a href="profil.html#bhineka">Nilai BHINEKA</a><a href="profil.html#kepemimpinan">Kepala Sekolah</a><a href="index.html#data">Data Sekolah</a></div></div><div class="dd"><button type="button" class="nav-link dd-btn" aria-haspopup="true" aria-expanded="false">Kegiatan <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="dd-menu"><a href="program.html">Program Unggulan</a><a href="index.html#ekskul">Ekstrakurikuler</a><a href="galeri.html">Galeri</a><a href="prestasi.html">Prestasi</a></div></div><a class="nav-link" href="perpustakaan.html">Perpustakaan</a><div class="dd"><button type="button" class="nav-link dd-btn is-active" aria-haspopup="true" aria-expanded="false">Informasi <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="dd-menu"><a href="pengumuman.html">Pengumuman</a><a href="buku-tamu.html" aria-current="page">Buku Tamu</a><a href="index.html#kontak">Kontak &amp; Lokasi</a></div></div><a class="nav-link" href="index.html#kontak">Kontak</a><a class="btn btn-primary mobile-only" href="buku-tamu.html">Buku Tamu</a><a class="nav-link mobile-only nav-admin" href="admin.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Login Admin</a></nav>
+  <div class="hdr-act">
+    <button type="button" class="btn-theme" id="themeBtn" aria-expanded="false" aria-controls="themePanel"><span class="sw" aria-hidden="true"></span><span class="t-label">Tema</span></button>
+    <a class="btn-cta" href="buku-tamu.html">Buku Tamu</a>
+    <button type="button" class="menu-btn" id="siteMenuBtn" aria-label="Buka menu" aria-expanded="false" aria-controls="siteNav"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></svg></button>
+  </div>
+  <div class="theme-panel" id="themePanel" hidden>
+    <div class="tp-title">Pilih Gaya Tampilan <small>tersimpan di perangkatmu</small></div>
+    <div class="tp-grid"><button type="button" class="tp-opt" data-gaya="klasik" aria-pressed="false"><span class="tp-dot" style="background:linear-gradient(135deg,#1f2f47 50%,#c6a56b 50%)"></span>Klasik Modern</button><button type="button" class="tp-opt" data-gaya="album" aria-pressed="false"><span class="tp-dot" style="background:linear-gradient(135deg,#0f4e57 50%,#ffffff 50%)"></span>Album Kenangan</button><button type="button" class="tp-opt" data-gaya="binder" aria-pressed="false"><span class="tp-dot" style="background:linear-gradient(135deg,#ffe45c 50%,#bcd4ee 50%)"></span>Buku Catatan</button><button type="button" class="tp-opt" data-gaya="sinematik" aria-pressed="false"><span class="tp-dot" style="background:linear-gradient(135deg,#0b0d10 50%,#e0483e 50%)"></span>Poster Sinematik</button><button type="button" class="tp-opt" data-gaya="scrapbook" aria-pressed="false"><span class="tp-dot" style="background:linear-gradient(135deg,#e7d3ae 50%,#1f4f8a 50%)"></span>Scrapbook</button><button type="button" class="tp-opt" data-gaya="pilar" aria-pressed="false"><span class="tp-dot" style="background:conic-gradient(#16b3a4 0 25%,#d6338a 0 50%,#2f6fe0 0 75%,#f08a24 0)"></span>Pilar Warna</button></div>
+    <div class="tp-sub"><p>Warna gaya Klasik</p><div class="tp-colors"><button type="button" class="tp-color" data-warna-pick="navy" aria-pressed="false" aria-label="Warna Navy Emas" title="Navy Emas" style="background:#1f2f47"></button><button type="button" class="tp-color" data-warna-pick="sage" aria-pressed="false" aria-label="Warna Hijau Sage" title="Hijau Sage" style="background:#24463d"></button><button type="button" class="tp-color" data-warna-pick="langit" aria-pressed="false" aria-label="Warna Biru Langit" title="Biru Langit" style="background:#0e3a6e"></button><button type="button" class="tp-color" data-warna-pick="borneo" aria-pressed="false" aria-label="Warna Merah Borneo" title="Merah Borneo" style="background:#6b1f2a"></button><button type="button" class="tp-color" data-warna-pick="gelap" aria-pressed="false" aria-label="Warna Mode Gelap" title="Mode Gelap" style="background:#0e1522"></button></div></div>
+  </div>
+</div></header>
+<main id="konten">
+<section class="page-hero" style="--ph-img:url('assets/images/galeri/upacara-1.webp')"><div class="wrap ph-grid">
+  <div class="ph-text"><span class="eyebrow">Ruang Silaturahmi</span><h1>Buku Tamu<br><em>Berbagi Inspirasi</em></h1><p>Silakan tinggalkan pesan, kesan, saran, atau tujuan kunjungan. Pesan akan ditinjau sebelum ditampilkan.</p></div>
+  <figure class="ph-media"><img src="assets/images/galeri/upacara-1.webp" alt="Upacara di SMP Negeri 7 Katingan Hilir" width="1200" height="900"></figure>
+</div></section>
+<section class="section"><div class="wrap guest-grid">
+  <div><div class="sec-head" style="margin-bottom:0"><span class="eyebrow">Terhubung &amp; Berkolaborasi</span><h2>Terima kasih telah <em>berkunjung.</em></h2><p>Silaturahmi dan kolaborasi menjadi bagian penting dalam perjalanan pendidikan.</p></div>
+    <div class="guest-public"><h3>Pesan yang telah disetujui</h3><div id="publicGuestbook"><p class="form-note">Memuat pesan…</p></div></div></div>
+  <form id="guestbookPageForm" class="guest-form">
+    <label>Nama *<input id="gbName" required maxlength="80" placeholder="Nama lengkap" autocomplete="name"></label>
+    <label>Instansi (opsional)<input id="gbInstitution" maxlength="100" placeholder="Sekolah / instansi"></label>
+    <label>Tujuan *<select id="gbPurpose" required><option value="">Pilih tujuan</option><option>Kunjungan Pendidikan</option><option>Kerja Sama</option><option>Studi Tiru</option><option>Informasi Sekolah</option><option>Orang Tua Murid</option><option>Alumni</option><option>Masyarakat</option><option>Lainnya</option></select></label>
+    <label>Pesan *<textarea id="gbMessage" required maxlength="1000" rows="5" placeholder="Tuliskan pesan, kesan, atau saran"></textarea></label>
+    <button class="btn btn-dark full" type="submit">Kirim Pesan →</button>
+    <small class="form-note">Pesan dikirim ke sekolah dan akan tampil setelah disetujui admin.</small>
+    <div id="gbStatus" role="status" aria-live="polite"></div>
+  </form>
+</div></section>
+</main>
+<footer class="site-footer">
+  <div class="wrap ft-grid">
+    <div class="ft-brand">
+      <a class="brand" href="index.html"><img class="brand-logo" src="assets/images/logo-sekolah.jpeg" alt="" width="46" height="46"><span class="brand-txt"><b>SMP Negeri 7</b><small>KATINGAN HILIR</small></span></a>
+      <h2>Berkarakter • Berprestasi • Menginspirasi</h2>
+      <p>Menumbuhkan generasi yang berkarakter, kritis, kreatif, adaptif, dan peduli terhadap masa depan.</p>
+      <div class="btn-row" style="margin-top:18px"><a class="btn btn-dark" href="buku-tamu.html">Isi Buku Tamu</a></div>
+      <div class="ft-chips"><span>NPSN 70047153</span><span>Sekolah Negeri</span><span>7 Program Unggulan</span></div>
+    </div>
+    <div class="ft-col"><h3>Menu</h3><ul><li><a href="index.html">Beranda</a></li><li><a href="profil.html">Profil Sekolah</a></li><li><a href="program.html">Program Unggulan</a></li><li><a href="prestasi.html">Prestasi</a></li><li><a href="galeri.html">Galeri</a></li></ul></div>
+    <div class="ft-col"><h3>Layanan</h3><ul><li><a href="pengumuman.html">Pengumuman</a></li><li><a href="perpustakaan.html">Perpustakaan Digital</a></li><li><a href="buku-tamu.html">Buku Tamu</a></li><li><a href="admin.html">Login Admin</a></li></ul></div>
+    <div class="ft-col"><h3>Kontak</h3><ul><li><a href="https://wa.me/6285249229287" target="_blank" rel="noopener">WA 0852-4922-9287</a></li><li>smpn7katinganhilir@gmail.com</li><li><a href="https://www.facebook.com/share/1A4gg72ULX/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.instagram.com/smpn7katingan" target="_blank" rel="noopener">Instagram @smpn7katingan</a></li></ul></div>
+  </div>
+  <p class="wrap ft-bottom">© <span class="js-year" id="currentYear">2026</span> SMP Negeri 7 Katingan Hilir · Jl. Manjau, Kelurahan Kasongan Lama, Kecamatan Katingan Hilir, Kabupaten Katingan, Kalimantan Tengah · NPSN 70047153</p>
+  <p class="ft-word" aria-hidden="true">SMPN 7</p>
+</footer>
+<a class="wa-float" href="https://wa.me/6285249229287" target="_blank" rel="noopener" aria-label="Chat WhatsApp sekolah"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.2-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2Z"/></svg><span>Tanya via WhatsApp</span></a>
+<button type="button" class="to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="portal.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
